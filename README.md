@@ -32,7 +32,7 @@ $ql->use(Baidu::class,'baidu');
 ```
 - Example-1
 
-```
+```php
 $baidu = $ql->baidu(10)
 $searcher = $baidu->search('QueryList');
 $count = $searcher->getCount();
@@ -49,7 +49,7 @@ for ($page = 1; $page <= $countPage; $page++)
 
 - Example-2
 
-```
+```php
 $searcher = $ql->baidu()->search('QueryList');
 $data = $searcher->setHttpOpt([
     // Set the http proxy
@@ -61,7 +61,7 @@ $data = $searcher->setHttpOpt([
 
 - Example-3
 
-```
+```php
 $baidu = $ql->baidu(3)
 $searcher = $baidu->search('QueryList');
 
