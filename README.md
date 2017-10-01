@@ -13,6 +13,7 @@ composer require jaeger/querylist-rule-baidu
 
 class **Baidu**:
 - Baidu **search($keyword)**:set search keyword.
+- Baidu **setHttpOpt(array $httpOpt = [])**：Set the http option,see: [GuzzleHttp options](http://docs.guzzlephp.org/en/stable/request-options.html)
 - int **getCount()**:Get the total number of search results.
 - int **getCountPage()**:Get the total number of pages.
 - Collection **page($page = 1,$realURL = false)**:Get search results
@@ -47,6 +48,18 @@ for ($page = 1; $page <= $countPage; $page++)
 ```
 
 - Example-2
+
+```
+$searcher = $ql->baidu()->search('QueryList');
+$data = $searcher->setHttpOpt([
+    // Set the http proxy
+    'proxy' => 'http://222.141.11.17:8118',
+   // Set the timeout time in seconds
+    'timeout' => 30,
+])->page(1);
+```
+
+- Example-3
 
 ```
 $baidu = $ql->baidu(3)

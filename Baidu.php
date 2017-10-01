@@ -16,6 +16,7 @@ class Baidu implements PluginContract
     protected $ql;
     protected $keyword;
     protected $pageNumber = 10;
+    protected $httpOpt = [];
     const API = 'https://www.baidu.com/s';
     const RULES = [
       'title' => ['h3','text'],
@@ -35,6 +36,12 @@ class Baidu implements PluginContract
         $queryList->bind($name,function ($pageNumber = 10){
             return new Baidu($this,$pageNumber);
         });
+    }
+
+    public function setHttpOpt(array $httpOpt = [])
+    {
+        $this->httpOpt = $httpOpt;
+        return $this;
     }
 
     public function search($keyword)
@@ -75,7 +82,7 @@ class Baidu implements PluginContract
             'wd' => $this->keyword,
             'rn' => $this->pageNumber,
             'pn' => $this->pageNumber * ($page-1)
-        ]);
+        ],$this->httpOpt);
         return $this->ql;
     }
 
