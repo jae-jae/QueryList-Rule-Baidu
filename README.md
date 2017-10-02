@@ -3,6 +3,8 @@ QueryList Plugin: Baidu searcher.
 
 QueryList插件：百度搜索引擎
 
+> QueryList:[https://github.com/jae-jae/QueryList](https://github.com/jae-jae/QueryList)
+
 ## Installation for QueryList4
 ```
 composer require jaeger/querylist-rule-baidu
