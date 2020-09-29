@@ -16,7 +16,12 @@ class Baidu implements PluginContract
     protected $ql;
     protected $keyword;
     protected $pageNumber = 10;
-    protected $httpOpt = [];
+    protected $httpOpt = [
+        'headers' => [
+            'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
+            'Accept-Encoding' => 'gzip, deflate, br',
+        ]
+    ];
     const API = 'https://www.baidu.com/s';
     const RULES = [
       'title' => ['h3','text'],
@@ -86,9 +91,14 @@ class Baidu implements PluginContract
         return $this->ql;
     }
 
+    /**
+     * 得到百度跳转的真正地址
+     * @param $url
+     * @return mixed
+     */
     protected  function getRealURL($url)
     {
-        //得到百度跳转的真正地址
+        if(empty($url)) return $url;
         $header = get_headers($url,1);
         if (strpos($header[0],'301') || strpos($header[0],'302'))
         {
